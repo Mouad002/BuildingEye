@@ -5,4 +5,6 @@ module com.example.buildingeye {
 
     opens com.example.buildingeye to javafx.fxml;
     exports com.example.buildingeye;
+    exports com.example.buildingeye.controllers;
+    opens com.example.buildingeye.controllers to javafx.fxml;
 }
