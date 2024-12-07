@@ -1,6 +1,7 @@
 module com.example.buildingeye {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.buildingeye to javafx.fxml;
