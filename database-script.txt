@@ -1,0 +1,20 @@
+create database buildingeye;
+
+use buildingyeye;
+
+create table admins (
+	id int primary key auto_increment,
+    username varchar(256) not null,
+    password varchar(256) not null
+);
+
+create table users (
+	id int primary key auto_increment,
+    username varchar(256) not null,
+    embeddings blob null,
+    autorized int not null default(0)
+);
+
+insert into admins(username, password) values('admin','admin');
+
+insert into users(username) values('walter white'),('jessie pinkman'),('rick grimes'),('kim wiksler'),('michone greys');
