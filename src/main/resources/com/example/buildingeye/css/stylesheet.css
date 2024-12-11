@@ -62,6 +62,13 @@
     -fx-background-radius: 20;
 }
 
+.text-field2 {
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,5.0);
+    -fx-background-radius: 20;
+    -fx-pref-height: 40px; /* Ajuster la hauteur */
+    -fx-pref-width: 200px; /* Ajuster la largeur */
+}
+
 .text-field1 .text
 {
 }
@@ -76,7 +83,7 @@
     -fx-font-family: "comfortaa";
 }
 
-.button1
+.button1,.buttonAdd,.buttonUpdate,.buttonDelete
 {
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,5.0);
     -fx-background-radius: 20;
@@ -89,7 +96,7 @@
 {
 }
 
-.button1:hover
+.button1:hover,.buttonAdd:hover,.buttonUpdate:hover,.buttonDelete:hover
 {
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,5.0);
     -fx-background-radius: 20;
