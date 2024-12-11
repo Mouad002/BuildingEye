@@ -1,7 +1,7 @@
 package com.example.buildingeye.controllers;
 
+import com.example.buildingeye.dao.AdminDAO;
 import com.example.buildingeye.functional.MyAlert;
-import com.example.buildingeye.functional.SingletonConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class LoginController {
 
@@ -34,6 +30,8 @@ public class LoginController {
     @FXML
     private TextField usernameTextField;
 
+    private final AdminDAO adminDAO = new AdminDAO();
+
     @FXML
     void onClearClick(ActionEvent event) {
         usernameTextField.clear();
@@ -42,17 +40,16 @@ public class LoginController {
 
     @FXML
     void onLoginClick(ActionEvent event) {
-        if(usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
+        if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
             MyAlert.showAlert("Error", "Filling the text field is necessary", Alert.AlertType.ERROR);
             return;
         }
-        Connection con = SingletonConnection.getConnection();
-        try {
-            PreparedStatement ps = con.prepareStatement("select * from admins where username like ? and password like ?");
-            ps.setString(1,usernameTextField.getText());
-            ps.setString(2,passwordTextField.getText());
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+
+        if (adminDAO.isAdminExists(username, password)) {
+            try {
                 URL fxmlLocation = getClass().getResource("/com/example/buildingeye/views/dashboard-view.fxml");
                 if (fxmlLocation == null) {
                     throw new IllegalStateException("FXML file not found!");
@@ -63,15 +60,16 @@ public class LoginController {
                 Stage newWindow = new Stage();
                 newWindow.setScene(newScene);
                 newWindow.show();
-                Node source = (Node)event.getSource();
-                Stage stage  = (Stage)source.getScene().getWindow();
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
                 stage.close();
-            } else {
-                MyAlert.showAlert("Error", "Wrong username or password", Alert.AlertType.ERROR);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
+        } else {
+            MyAlert.showAlert("Error", "Wrong username or password", Alert.AlertType.ERROR);
+            usernameTextField.clear();
+            passwordTextField.clear();
         }
     }
-
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class SingletonConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/buildingeye";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "7OCTober2023*";
     private static final Connection connection;
 
     static {
