@@ -3,16 +3,18 @@ package com.example.buildingeye.functional;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class SingletonConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/buildingeye";
-    private static final String USER = "root";
-    private static final String PASSWORD = "7OCTober2023*";
     private static final Connection connection;
 
     static {
         try {
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Properties properties = MyConfig.loadConfig();
+            String url = properties.getProperty("db.url");
+            String username = properties.getProperty("db.username");
+            String password = properties.getProperty("db.password");
+            connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
