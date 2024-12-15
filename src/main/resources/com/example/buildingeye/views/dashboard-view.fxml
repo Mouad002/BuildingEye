@@ -16,28 +16,30 @@
 <TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.buildingeye.controllers.DashboardController">
    <tabs>
       <!-- USERS Tab -->
-      <Tab text="USERS">
+      <Tab closable="false" text="USERS">
          <AnchorPane prefHeight="533.0" prefWidth="691.0">
             <children>
 
                <!-- Form for adding/updating user information -->
                <VBox layoutX="120.0" layoutY="6.0" prefHeight="160.0" prefWidth="390.0" spacing="10.0">
-                  <TextField fx:id="usernameField" promptText="Username" styleClass="text-field1" stylesheets="@../css/stylesheet.css">
+                  <TextField fx:id="usernameField" promptText="Username" styleClass="text-field2" stylesheets="@../css/stylesheet.css">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin></TextField>
                   <HBox spacing="10.0">
-                     <Button fx:id="captureButton" styleClass="button1" stylesheets="@../css/stylesheet.css" text="Capture Image">
-                        <HBox.margin>
-                           <Insets left="10.0" />
-                        </HBox.margin></Button>
+                     <children>
+                        <Button fx:id="addButton" prefHeight="34.0" prefWidth="141.0" styleClass="buttonAdd" stylesheets="@../css/stylesheet.css" text="Add">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
                   </HBox>
                   <ImageView fx:id="userImageView" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
                </VBox>
 
                   <!-- Action buttons -->
-               <HBox layoutX="148.0" layoutY="463.0" prefHeight="34.0" prefWidth="396.0" spacing="20.0">
-                  <Button fx:id="addButton" prefHeight="34.0" prefWidth="141.0" styleClass="buttonAdd" stylesheets="@../css/stylesheet.css" text="Add" />
+               <HBox layoutX="216.0" layoutY="458.0" prefHeight="34.0" prefWidth="396.0" spacing="20.0">
                   <Button fx:id="updateButton" prefHeight="34.0" prefWidth="125.0" styleClass="buttonUpdate" stylesheets="@../css/stylesheet.css" text="Update" />
                   <Button fx:id="deleteButton" prefHeight="34.0" prefWidth="125.0" styleClass="buttonDelete" stylesheets="@../css/stylesheet.css" text="Delete" />
                </HBox>
