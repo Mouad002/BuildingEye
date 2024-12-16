@@ -1,5 +1,6 @@
 package com.example.buildingeye.controllers;
 
+import com.example.buildingeye.functional.WebcamHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ public class HelloController {
 
     @FXML
     void openFacialRecognitor(ActionEvent event) {
-
+        new Thread(new WebcamHelper()).start();
     }
 
     @FXML

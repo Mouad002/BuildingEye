@@ -2,6 +2,9 @@ module com.example.buildingeye {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires org.bytedeco.javacpp;
+    requires org.bytedeco.opencv;
+    requires libtensorflow;
 
 
     opens com.example.buildingeye to javafx.fxml;
