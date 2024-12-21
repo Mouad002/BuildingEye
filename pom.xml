@@ -13,6 +13,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <junit.version>5.9.2</junit.version>  </properties>
 
+
+
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -43,6 +45,7 @@
       <artifactId>mysql-connector-j</artifactId>
       <version>9.1.0</version>
     </dependency>
+<<<<<<< HEAD
 
     <dependency>
       <groupId>junit</groupId>
@@ -68,6 +71,8 @@
       <version>1.5.11</version>
     </dependency>
 
+=======
+>>>>>>> c52bcf0743f21f9f861e13786e97edc16481bb00
 
 
   </dependencies>
