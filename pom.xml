@@ -11,9 +11,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<junit.version>5.9.2</junit.version>  </properties>
-
-
+    <junit.version>5.9.2</junit.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -45,7 +44,6 @@
       <artifactId>mysql-connector-j</artifactId>
       <version>9.1.0</version>
     </dependency>
-<<<<<<< HEAD
 
     <dependency>
       <groupId>junit</groupId>
@@ -70,10 +68,6 @@
       <artifactId>javacv-platform</artifactId>
       <version>1.5.11</version>
     </dependency>
-
-=======
->>>>>>> c52bcf0743f21f9f861e13786e97edc16481bb00
-
 
   </dependencies>
 
