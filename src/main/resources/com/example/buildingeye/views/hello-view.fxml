@@ -22,8 +22,8 @@
         </padding>
 
         <!-- Logo -->
-        <ImageView fitHeight="300.0" fitWidth="300.0" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, white, 10, 0.5, 0, 0);">
-            <Image url="@../images/logo.png"/>
+        <ImageView fitHeight="300.0" fitWidth="300.0" preserveRatio="true" >
+            <Image url="@../images/new.png"/>
         </ImageView>
 
         <!-- Welcome Text -->
