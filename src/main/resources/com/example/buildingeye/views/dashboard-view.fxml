@@ -8,57 +8,109 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.buildingeye.controllers.DashboardController">
-   <tabs>
-      <!-- USERS Tab -->
-      <Tab closable="false" text="USERS">
-         <AnchorPane prefHeight="533.0" prefWidth="691.0">
-            <children>
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.example.buildingeye.controllers.DashboardController"
+            style="-fx-background-color: white;">
+    
+    <!-- Logout Button with Icon -->
+    <HBox alignment="CENTER" spacing="5" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <Button fx:id="logoutButton" onAction="#handleLogout" 
+                style="-fx-background-color: #51b84b;
+                       -fx-text-fill: white;
+                       -fx-font-size: 14px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 20;
+                       -fx-cursor: hand;
+                       -fx-min-width: 100;">
+            <graphic>
+                <ImageView fitHeight="16.0" fitWidth="16.0">
+                    <Image url="@../images/logout.png"/>
+                </ImageView>
+            </graphic>
+            <padding>
+                <Insets left="10" right="10" top="5" bottom="5"/>
+            </padding>
+            <text>Logout</text>
+        </Button>
+    </HBox>
 
-               <!-- Form for adding/updating user information -->
-               <VBox layoutX="120.0" layoutY="6.0" prefHeight="160.0" prefWidth="390.0" spacing="10.0">
-                  <TextField fx:id="usernameField" promptText="Username" styleClass="text-field2" stylesheets="@../css/stylesheet.css">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin></TextField>
-                  <HBox spacing="10.0">
-                     <children>
-                        <Button fx:id="addButton" prefHeight="34.0" prefWidth="141.0" styleClass="buttonAdd" stylesheets="@../css/stylesheet.css" text="Add">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <ImageView fx:id="userImageView" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
-               </VBox>
+    <TabPane style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" 
+             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+        <tabs>
+            <!-- USERS Tab -->
+            <Tab closable="false" text="USERS">
+                <AnchorPane style="-fx-background-color: transparent;">
+                    <children>
+                        <!-- Title -->
+                        <Text fill="#51b84b" text="User Management" 
+                              style="-fx-font-size: 24px; -fx-font-weight: bold;"
+                              AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0"/>
 
-                  <!-- Action buttons -->
-               <HBox layoutX="216.0" layoutY="458.0" prefHeight="34.0" prefWidth="396.0" spacing="20.0">
-                  <Button fx:id="updateButton" prefHeight="34.0" prefWidth="125.0" styleClass="buttonUpdate" stylesheets="@../css/stylesheet.css" text="Update" />
-                  <Button fx:id="deleteButton" prefHeight="34.0" prefWidth="125.0" styleClass="buttonDelete" stylesheets="@../css/stylesheet.css" text="Delete" />
-               </HBox>
-               <TableView fx:id="usersTable" layoutX="48.0" layoutY="194.0" prefHeight="250.0" prefWidth="580.0" styleClass="table-view" stylesheets="@../css/table-view.css">
-                  <columns>
-                     <TableColumn fx:id="colUsername" prefWidth="579.199987411499" text="Username" />
-                  </columns>
-               </TableView>
-            </children>
-         </AnchorPane>
-      </Tab>
+                        <!-- Form for adding user information -->
+                        <VBox layoutX="120.0" layoutY="60.0" prefHeight="160.0" prefWidth="390.0" spacing="10.0">
+                            <TextField fx:id="usernameField" promptText="Username" 
+                                     style="-fx-background-radius: 20; 
+                                            -fx-background-color: white;
+                                            -fx-border-color: #dee2e6;
+                                            -fx-border-radius: 20;
+                                            -fx-font-size: 14px;
+                                            -fx-padding: 8;">
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="20.0" />
+                                </VBox.margin>
+                            </TextField>
+                            <HBox spacing="10.0">
+                                <Button fx:id="addButton" onAction="#handleButtonAction" 
+                                        style="-fx-background-color: #51b84b;
+                                               -fx-text-fill: white;
+                                               -fx-font-size: 14px;
+                                               -fx-font-weight: bold;
+                                               -fx-background-radius: 20;
+                                               -fx-cursor: hand;
+                                               -fx-min-width: 141;
+                                               -fx-min-height: 34;" 
+                                        text="Add User">
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </HBox>
+                            <ImageView fx:id="userImageView" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+                        </VBox>
 
-      <!-- STATS / LOGS Tab -->
-      <Tab text="STATS / LOGS">
-         <AnchorPane>
-            <children>
-               <Label layoutX="20.0" layoutY="20.0" text="Content for Stats / Logs will be added later." />
-            </children>
-         </AnchorPane>
-      </Tab>
-   </tabs>
-</TabPane>
+                        <!-- Users Table -->
+                        <TableView fx:id="usersTable" layoutX="48.0" layoutY="194.0" 
+                                 style="-fx-background-color: transparent;"
+                                 prefHeight="250.0" prefWidth="580.0">
+                            <columns>
+                                <TableColumn fx:id="colUsername" prefWidth="450.0" text="Username" />
+                                <TableColumn fx:id="colActions" prefWidth="129.0" text="Actions" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </Tab>
+
+            <!-- STATS / LOGS Tab -->
+            <Tab text="STATS / LOGS">
+                <AnchorPane>
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" 
+                               style="-fx-font-size: 14px; -fx-text-fill: #6c757d;"
+                               text="Content for Stats / Logs will be added later." />
+                    </children>
+                </AnchorPane>
+            </Tab>
+        </tabs>
+    </TabPane>
+</AnchorPane>

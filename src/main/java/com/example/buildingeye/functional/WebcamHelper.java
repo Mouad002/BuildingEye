@@ -30,7 +30,7 @@ public class WebcamHelper implements Runnable {
         float[] newEmbeddings = null;
 
         // Open the webcam
-        VideoCapture webcam = new VideoCapture(0); // 0 for default camera
+        VideoCapture webcam = new VideoCapture(1); // 0 for default camera
         if (!webcam.isOpened()) {
             System.err.println("Error: Could not open the webcam.");
             return;
@@ -65,7 +65,7 @@ public class WebcamHelper implements Runnable {
                 newEmbeddings = fee.faceExtractorFromMat(croppedFace);
 
                 // calculate the distance between the new and the existing embeddings
-                double distance = fee.cosineSimilarity(newEmbeddings, mouad);
+                double distance = fee.cosineSimilarity(newEmbeddings, fatiha);
 
 //                // uncomment this line to see the extracted embeddings on the console
 //                System.out.println(Arrays.toString(newEmbeddings));

@@ -4,13 +4,62 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.buildingeye.controllers.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" 
+           fx:controller="com.example.buildingeye.controllers.HelloController">
+    
+    <!-- Background Rectangle -->
+    <Rectangle width="800" height="600" fill="BLACK"/>
+    
+    <VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: transparent;">
+        <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+        </padding>
 
-  <Label fx:id="welcomeText" text="Welcome again" />
-  <Button fx:id="facialRecognitorButton" onAction="#openFacialRecognitor" text="facial recognitor" />
-   <Button fx:id="loginButton" mnemonicParsing="false" onAction="#openLoginStage" text="login" />
-</VBox>
+        <!-- Logo -->
+        <ImageView fitHeight="300.0" fitWidth="300.0" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, white, 10, 0.5, 0, 0);">
+            <Image url="@../images/logo.png"/>
+        </ImageView>
+
+        <!-- Welcome Text -->
+        <Text fill="WHITE" text="Welcome to BuildingEye" 
+              style="-fx-font-family: 'Segoe UI'; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+        
+        <Text fill="#51b84b" text="Smart Access Control System" 
+              style="-fx-font-family: 'Segoe UI'; -fx-font-size: 18px; -fx-font-style: italic;"/>
+
+        <!-- Buttons Container -->
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 30 0 30 0;">
+            <Button fx:id="facialRecognitorButton" onAction="#openFacialRecognitor" 
+                    text="Facial Recognition" 
+                    style="-fx-background-color: #51b84b; 
+                           -fx-text-fill: black;
+                           -fx-font-size: 16px;
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-min-height: 45;
+                           -fx-background-radius: 25;
+                           -fx-cursor: hand;"/>
+
+            <Button fx:id="loginButton" onAction="#openLoginStage" 
+                    text="Admin Login" 
+                    style="-fx-background-color: white;
+                           -fx-text-fill: black;
+                           -fx-font-size: 16px;
+                           -fx-font-weight: bold;
+                           -fx-min-width: 250;
+                           -fx-min-height: 45;
+                           -fx-background-radius: 25;
+                           -fx-cursor: hand;"/>
+        </VBox>
+
+        <!-- Footer -->
+        <Text fill="#51b84b" text="Securing Your Building with Advanced Technology" 
+              style="-fx-font-family: 'Segoe UI'; -fx-font-size: 14px;"/>
+    </VBox>
+</StackPane>
