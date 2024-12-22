@@ -57,7 +57,7 @@ public class HelloController {
 
     private void startWebcamCapture() {
         try {
-            webcam = new VideoCapture(1);
+            webcam = new VideoCapture(0);
 
             if (webcam == null || !webcam.isOpened()) {
                 Platform.runLater(() -> {

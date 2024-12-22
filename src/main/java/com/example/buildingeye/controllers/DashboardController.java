@@ -129,7 +129,7 @@ public class DashboardController {
         }
 
         // Step 1: Open camera
-        VideoCapture camera = new VideoCapture(1);
+        VideoCapture camera = new VideoCapture(0);
         if (!camera.isOpened()) {
             MyAlert.showAlert("Error", "Failed to open the camera!", Alert.AlertType.ERROR);
             return;
