@@ -1,5 +1,6 @@
 package com.example.buildingeye;
 
+import com.example.buildingeye.functional.SingletonVideoCapture;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class HelloApplication extends Application {
         stage.setTitle("BuildingEye");
         stage.setScene(scene);
         stage.show();
+        SingletonVideoCapture.getVideoCapture();
     }
 
     public static void main(String[] args) {

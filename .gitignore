@@ -40,3 +40,4 @@ build/
 
 src/main/resources/com/example/buildingeye/config.properties
 
+buildingeye.db

@@ -3,13 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.buildingeye.controllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.buildingeye.controllers.LoginController">
    <left>
       <ImageView fitHeight="402.0" fitWidth="407.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -37,11 +38,11 @@
                         <Insets left="15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="passwordTextField" accessibleRole="PASSWORD_FIELD" layoutX="132.0" layoutY="80.0" prefHeight="35.0" prefWidth="200.0" promptText="password" styleClass="text-field1" stylesheets="@../css/stylesheet.css">
+                  <PasswordField fx:id="passwordTextField" layoutX="132.0" layoutY="80.0" prefHeight="35.0" prefWidth="200.0" promptText="password" styleClass="text-field1" stylesheets="@../css/stylesheet.css">
                      <padding>
                         <Insets left="15.0" />
                      </padding>
-                  </TextField>
+                  </PasswordField>
                   <Button fx:id="loginButton" layoutX="132.0" layoutY="126.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="8.0" prefWidth="200.0" styleClass="button1" stylesheets="@../css/stylesheet.css" text="login" />
                   <Button fx:id="clear" layoutX="132.0" layoutY="169.0" mnemonicParsing="false" onAction="#onClearClick" prefHeight="33.0" prefWidth="200.0" styleClass="button1" stylesheets="@../css/stylesheet.css" text="clear" />
                   <Label layoutX="53.0" layoutY="43.0" text="username :" />

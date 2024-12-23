@@ -1,18 +1,16 @@
 package com.example.buildingeye.controllers;
 
-import com.example.buildingeye.HelloApplication;
 import com.example.buildingeye.dao.UserDAO;
 import com.example.buildingeye.functional.FaceRecognitionHelper;
 import com.example.buildingeye.functional.MyAlert;
+import com.example.buildingeye.functional.SingletonVideoCapture;
 import com.example.buildingeye.models.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 import org.bytedeco.opencv.global.opencv_highgui;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
@@ -21,7 +19,6 @@ import org.bytedeco.opencv.opencv_core.Rect;
 import org.bytedeco.opencv.opencv_videoio.VideoCapture;
 import org.bytedeco.opencv.opencv_core.RectVector;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,9 +37,11 @@ public class DashboardController {
 
     private FaceRecognitionHelper faceRecognitionHelper;
     private UserDAO userDAO;
+    private VideoCapture camera;
 
     public DashboardController() {
         faceRecognitionHelper = new FaceRecognitionHelper();
+        camera = SingletonVideoCapture.getVideoCapture();
         userDAO = new UserDAO();
     }
 
@@ -128,8 +127,7 @@ public class DashboardController {
             return;
         }
 
-        // Step 1: Open camera
-        VideoCapture camera = new VideoCapture(0);
+        // Step 1: check if the camera is opened
         if (!camera.isOpened()) {
             MyAlert.showAlert("Error", "Failed to open the camera!", Alert.AlertType.ERROR);
             return;
@@ -169,7 +167,7 @@ public class DashboardController {
             }
         }
 
-        camera.release();
+//        camera.release();
         opencv_highgui.destroyAllWindows();
 
         if (embeddingsList.isEmpty()) {

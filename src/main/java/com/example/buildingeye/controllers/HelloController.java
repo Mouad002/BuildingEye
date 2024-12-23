@@ -2,6 +2,7 @@ package com.example.buildingeye.controllers;
 
 import com.example.buildingeye.functional.DatabaseFaceRecognition;
 import com.example.buildingeye.functional.FaceRecognitionHelper;
+import com.example.buildingeye.functional.SingletonVideoCapture;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,6 +44,7 @@ public class HelloController {
     public HelloController() {
         this.faceRecognition = new DatabaseFaceRecognition();
         this.faceRecognitionHelper = new FaceRecognitionHelper();
+        webcam = SingletonVideoCapture.getVideoCapture();
     }
 
     @FXML
@@ -57,8 +59,6 @@ public class HelloController {
 
     private void startWebcamCapture() {
         try {
-            webcam = new VideoCapture(0);
-
             if (webcam == null || !webcam.isOpened()) {
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,7 +73,7 @@ public class HelloController {
             Mat frame = new Mat();        // Original color frame
             Mat grayFrame = new Mat();    // Grayscale frame for detection
 
-            String webcamWindow = "Facial Recognition";
+            String webcamWindow = "Facial Recognition - press q to quit";
             opencv_highgui.namedWindow(webcamWindow);
 
             while (true) {
@@ -103,7 +103,7 @@ public class HelloController {
                     // Draw rectangle and text on the original color frame
                     Scalar color = result.getRectangleColor();
                     opencv_imgproc.rectangle(frame, faceRect, color, 2, 0, 0);
-                    
+
                     // Add text above the rectangle
                     Point textOrigin = new Point(faceRect.x(), faceRect.y() - 10);
                     opencv_imgproc.putText(frame, result.getDisplayText(), 
@@ -130,7 +130,6 @@ public class HelloController {
             });
             e.printStackTrace();
         } finally {
-            stopWebcam();
             opencv_highgui.destroyAllWindows();
         }
     }
@@ -152,6 +151,7 @@ public class HelloController {
             Parent root = loader.load();
             Scene newScene = new Scene(root);
             Stage newWindow = new Stage();
+            newWindow.setTitle("BuildingEye");
             newWindow.setScene(newScene);
             newWindow.show();
         } catch (IOException e) {

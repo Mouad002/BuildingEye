@@ -59,6 +59,7 @@ public class LoginController {
                 Scene newScene = new Scene(root);
                 Stage newWindow = new Stage();
                 newWindow.setScene(newScene);
+                newWindow.setTitle("BuildingEye");
                 newWindow.show();
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
